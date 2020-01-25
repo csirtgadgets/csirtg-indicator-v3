@@ -20,7 +20,7 @@ if sys.argv[-1] == 'test':
         raise ImportError(msg)
 
     r = os.system('py.test test -sv --cov=csirtg_indicator '
-                  '--cov-fail-under=70 --pep8')
+                  '--cov-fail-under=65 --pep8')
 
     if r == 0:
         sys.exit()
@@ -47,7 +47,8 @@ setup(
         'csirtg-re',
         'csirtg-peers',
         'csirtg-spamhaus',
-        'csirtg-geo'
+        'csirtg-geo',
+        'pytricia'
     ],
     scripts=[],
     entry_points={

@@ -1,5 +1,5 @@
 csirtg-dt>=0.1,<1.0
-csirtg-maxmind>=0.1,<1.0
+csirtg-geo>=0.1,<1.0
 csirtg-re>=0.1,<1.0
 csirtg-peers>=0.1,<1.0
 csirtg-spamhaus>=0.1,<1.0

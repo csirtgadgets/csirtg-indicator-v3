@@ -47,6 +47,7 @@ setup(
         'csirtg-re',
         'csirtg-peers',
         'csirtg-spamhaus',
+        'csirtg-geo'
     ],
     scripts=[],
     entry_points={

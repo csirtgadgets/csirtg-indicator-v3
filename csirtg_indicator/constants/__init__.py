@@ -1,0 +1,29 @@
+import os
+
+from csirtg_re import *
+from .fields import FIELDS, FIELDS_TIME
+from .networks import V4_RESERVED, V6_RESERVED
+
+VERSION = '3.0a0'
+
+LOG_FORMAT = '%(asctime)s - %(levelname)s - %(name)s[%(lineno)s] - %(message)s'
+
+COLUMNS = ['tlp', 'group', 'reported_at', 'indicator', 'risk', 'asn', 'cc',
+           'first_at', 'last_at', 'count', 'tags', 'description', 'confidence',
+           'provider', 'reference']
+
+MAX_FIELD_SIZE = 30
+
+BASESTRING = (str, bytes)
+
+GEO = os.getenv('CSIRTG_INDICATOR_GEO', False)
+if GEO == '1':
+    GEO = True
+
+PEERS = os.getenv('CSIRTG_INDICATOR_PEERS', False)
+if PEERS == '1':
+    PEERS = True
+
+FQDN = os.getenv('CSIRTG_INDICATOR_FQDN', False)
+if FQDN == '1':
+    FQDN = True

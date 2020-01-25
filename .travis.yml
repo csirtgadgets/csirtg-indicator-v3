@@ -1,0 +1,26 @@
+sudo: required
+language: python
+cache: pip
+python:
+- 3.6
+- 3.7
+- 3.8
+before_install:
+- pip install -r dev_requirements.txt
+script:
+- python setup.py develop
+- python setup.py test
+- python setup.py sdist bdist bdist_wheel
+notifications:
+  email:
+    on_success: never
+    on_failure: never
+deploy:
+  provider: pypi
+  user: __token__
+  on:
+    branch: master
+    tags: true
+    condition: $TRAVIS_PYTHON_VERSION = "3.8"
+  password:
+    secure: BRQsUpo34KSM/GD9Y9OnrkUKnOeblY+xAz1S32UduxjmR6nA2Pe96AGS5z2NIuf7cSrRk3kZufCdlllDu4tasqRZlsRTlS/++QaWY/2k+b2UhUPcXO0HiI9JYgs4x06TH92IoyXGadOgkhtT9TxIo+BJsA17+qGV8mDYiDuBbvIOaXGMWIveienAE9RTHoIeeqruoOqeULLVLyKutO1JQk2nshhiyE86aUYyrCDtuLR5S8G40ms8eS6FDTeim6Nc8RNjFUkxF22lXFJB/dOeVj7DOedw3l0qb6x4FbvGDRIMM7PYpgci/x/UV2qf6Jo+2eVnCObbedlS0XpV7WmOCyFJibVsFcw78kqI3VRvkvFrXQlpwy7NF42DEw6/vS09vvnFB6425++VBhhav27LVB/GWdoZvhMnxo25Rw3wMFocxI2qkcI8ln7TWTCZJWId1D2LiyfMyftqqTzFFdZlE4AJzbpwuXSiD0pencLGy488E+HhW/bNtyOWdiIMtJKPXGbF3fzTgcPOEEofZ13VeKeVu48CTi2xP7SL5msZ4/Xrrzo0/01iIl0u1sS4dUFhBM2xv3LVx3Yr42LtrdZaArpAytVFSw7OSSD+0AiREBGsTSknRT1aOC0nid0jMHteUDoFp3iGC+TauWv3QiUdw5UHNCwfaWg4t8cS08hTM6Y=

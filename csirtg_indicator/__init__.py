@@ -44,14 +44,14 @@ class Indicator(PropertiesMixin, FormatterMixin,
         self.resolve_peers = kwargs.get('resolve_peers', PEERS)
         self.resolve_fqdn = kwargs.get('resolve_fqdn', FQDN)
 
+        if self.resolve_fqdn:
+            self.fqdn_resolve()
+
         if self.resolve_geo:
             self.geo_resolve()
 
         if self.resolve_peers:
             self.peers_resolve()
-
-        if self.resolve_fqdn:
-            self.fqdn_resolve()
 
     def _init_fields(self, **kwargs):
         for k in FIELDS:

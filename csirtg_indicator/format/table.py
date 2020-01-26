@@ -3,6 +3,7 @@ import arrow
 from csirtg_indicator import Indicator
 from csirtg_indicator.constants import COLUMNS, MAX_FIELD_SIZE
 from csirtg_indicator.utils import list_to_csv
+from pprint import pprint
 
 
 def _indicator_row(i, cols, max_field_size):
@@ -11,9 +12,10 @@ def _indicator_row(i, cols, max_field_size):
 
     r = []
     for c in cols:
+
         y = i.get(c, '')
 
-        if isinstance(y, list):
+        if isinstance(y, list) and y[0] is not None:
             y = list_to_csv(y)
 
         if c == 'confidence' and y is None:

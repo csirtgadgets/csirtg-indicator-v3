@@ -38,12 +38,14 @@ def resolve_ns(data, t='A', timeout=TIMEOUT, nameserver=None):
 
     except (NoAnswer, NXDOMAIN, EmptyLabel, NoNameservers, Timeout) as e:
         e = str(e)
-        print(e)
         if e.startswith('The DNS operation timed out after'):
             return
 
         if 'The DNS response does not contain' in e or \
                 'None of DNS query names exist' in e:
+            return
+
+        if 'failed to answer' in e:
             return
 
         raise

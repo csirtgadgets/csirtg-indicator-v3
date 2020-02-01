@@ -104,6 +104,9 @@ class Indicator(PropertiesMixin, FormatterMixin,
                 setattr(i, k, kwargs[k])
 
             i.uuid = str(uuid.uuid4())
+            if not i.tags:
+                i.tags = []
+
             if not isinstance(i.tags, list):
                 i.tags = [i.tags]
 

@@ -5,4 +5,3 @@ csirtg-peers>=0.1,<1.0
 csirtg-spamhaus>=0.1,<1.0
 pytricia==1.0.0
 prettytable~=0.7
-networkx~=2.4

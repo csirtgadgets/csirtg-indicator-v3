@@ -1,11 +1,20 @@
-
-import networkx as nx
 import os
+
+ENABLED = False
+try:
+    import networkx as nx
+    ENABLED = True
+
+except ImportError:
+    pass
 
 PATH = os.getenv('GEXF_PATH', 'indicators.gexf')
 
 
 def get_lines(data, path=PATH):
+    if not ENABLED:
+        raise ImportError('missing networkx library')
+
     g = nx.Graph()
 
     if not isinstance(data, list):

@@ -15,6 +15,7 @@ before_install:
 - echo 'ProductIds GeoLite2-Country GeoLite2-City GeoLite2-ASN' | sudo tee -a /etc/GeoIP.conf > /dev/null
 - sudo geoipupdate
 - pip install -r dev_requirements.txt
+- pip install networkx~=2.4
 script:
 - python setup.py develop
 - python setup.py test

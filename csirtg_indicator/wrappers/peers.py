@@ -7,4 +7,4 @@ class Peers(object):
         if self.is_private or not self.itype == 'ipv4':
             return
 
-        self.peers = get(self)
+        self.peers = list(get(self.indicator))

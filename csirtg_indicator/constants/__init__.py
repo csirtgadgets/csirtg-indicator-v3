@@ -16,14 +16,14 @@ MAX_FIELD_SIZE = 30
 
 BASESTRING = (str, bytes)
 
-GEO = os.getenv('CSIRTG_INDICATOR_GEO', False)
-if GEO == '1':
+GEO = False
+if os.getenv('CSIRTG_INDICATOR_GEO', '') == '1':
     GEO = True
 
-PEERS = os.getenv('CSIRTG_INDICATOR_PEERS', False)
-if PEERS == '1':
+PEERS = False
+if os.getenv('CSIRTG_INDICATOR_PEERS', '') == '1':
     PEERS = True
 
-FQDN = os.getenv('CSIRTG_INDICATOR_FQDN', False)
-if FQDN == '1':
+FQDN = False
+if os.getenv('CSIRTG_INDICATOR_FQDN', '') == '1':
     FQDN = True

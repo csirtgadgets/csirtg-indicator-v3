@@ -73,3 +73,4 @@ def get_lines(data, cols=COLUMNS_DEFAULT):
 
         if isinstance(output, StringIO):
             output.truncate(0)
+            output.seek(0)

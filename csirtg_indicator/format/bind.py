@@ -27,3 +27,4 @@ def get_lines(data, filename=OUTPUT_PATH):
 
         if isinstance(output, StringIO):
             output.truncate(0)
+            output.seek(0)

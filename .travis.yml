@@ -17,7 +17,7 @@ before_install:
 - pip install -r dev_requirements.txt
 - pip install networkx~=2.4
 script:
-- python setup.py develop
+- python setup.py develop`
 - python setup.py test
 - python setup.py sdist bdist bdist_wheel
 notifications:

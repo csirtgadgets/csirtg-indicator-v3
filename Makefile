@@ -13,5 +13,8 @@ test:
 
 dist: sdist
 
+deploy: clean sdist
+	twine upload dist/csirtg-indicator-*.tar.gz
+
 sdist:
 	@python setup.py sdist

@@ -30,7 +30,7 @@ class DNS(object):
             if not d:
                 return
 
-        r = resolve_fqdn(d)
+        r = resolve_ns(d)
         if self._is_invalid(r):
             return
 

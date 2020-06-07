@@ -52,6 +52,6 @@ def resolve_ns(data, t='A', timeout=TIMEOUT, nameserver=None):
 
     resp = []
     for rdata in answers:
-        resp.append(rdata)
+        resp.append(str(rdata))
 
     return resp

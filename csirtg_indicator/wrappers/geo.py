@@ -19,11 +19,14 @@ class Geo(object):
 
         rv = get(self.indicator)
         if not rv and self.rdata:
-            rv = get(self.rdata[0])
+            try:
+                rv = get(self.rdata[0])
+
+            except Exception as e:
+                print(e)
 
         if not rv:
             return
 
         for k, v in rv.items():
             setattr(self, k, v)
-

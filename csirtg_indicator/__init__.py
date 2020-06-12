@@ -85,7 +85,7 @@ class Indicator(PropertiesMixin, FormatterMixin,
         self.uuid = kwargs.get('uuid', str(uuid.uuid4()))
         self.group = kwargs.get('group', 'everyone')
         self.tlp = kwargs.get('tlp', 'AMBER')
-        self.asn_desc = None
+        self.asn_desc = kwargs.get('asn_desc')
 
         # incoming id
         self.iid = kwargs.get('iid')

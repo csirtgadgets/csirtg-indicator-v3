@@ -1,6 +1,6 @@
 
 import pytricia
-from csirtg_indicator.utils.ip import is_ipv4
+from csirtg_indicator.utils.ip import is_ipv4, is_ipv4_net
 from csirtg_indicator.constants.networks import V4_RESERVED
 
 LARGEST_PREFIX = '8'
@@ -38,7 +38,7 @@ def process(data=[], whitelist=[]):
 
         i['indicator'] = _normalize(i['indicator'])
 
-        if not is_ipv4(i['indicator']):
+        if not is_ipv4(i['indicator']) and not is_ipv4_net(i['indicator']):
             continue
 
         if i['indicator'] in V4_RESERVED:

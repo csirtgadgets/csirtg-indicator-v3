@@ -1,4 +1,5 @@
 from csirtg_indicator import Indicator
+from csirtg_indicator.feed.ipv4 import process
 import pytest
 from faker import Faker
 fake = Faker()
@@ -8,6 +9,20 @@ DISABLE_FAST_TESTS = os.getenv('DISABLE_NETWORK_TESTS', False)
 
 OUTLIERS = [
     '18.5.4.0/8'
+]
+
+FEED = [
+    {'indicator': '1.1.1.1', 'tags': ['test']},
+    {'indicator': '1.2.3.4', 'tags': ['test']},
+    {'indicator': '1.2.3.0/24', 'tags': ['test']},
+    {'indicator': '4.3.2.1', 'tags': ['test']},
+    {'indicator': '192.168.1.1', 'tags': ['test']},
+    {'indicator': '192.168.10.0/24', 'tags': ['test']}
+]
+
+FEED_WL = [
+    {'indicator': '1.1.1.1', 'tags': ['whitelist']},
+    {'indicator': '1.2.0.0/16', 'tags': ['whitelist']}
 ]
 
 
@@ -95,3 +110,20 @@ def test_ipv4_outliers():
 def test_spamhaus():
     i = Indicator('71.6.146.130', resolve_geo=True)
     assert i.spamhaus() is not None
+
+
+def test_ipv4_feed():
+
+    feed = list(process(FEED, {}))
+
+    assert len(feed) == 4
+    assert feed[0]['indicator'] == '1.1.1.1'
+    assert feed[1]['indicator'] == '1.2.3.4'
+    assert feed[2]['indicator'] == '1.2.3.0/24'
+    assert feed[3]['indicator'] == '4.3.2.1'
+
+
+    feed = list(process(FEED, FEED_WL))
+
+    assert len(feed) == 1
+    assert feed[0]['indicator'] == '4.3.2.1'

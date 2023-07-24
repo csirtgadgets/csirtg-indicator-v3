@@ -59,13 +59,11 @@ def is_url(s):
     if not re.match(RE_URI_SCHEMES, str(u.scheme)):
         return
 
-    u = u.hostname
-
-    if is_ip(u) or is_fqdn(u):
+    if is_ip(u.hostname) or is_fqdn(u.hostname):
         return True
 
-    if ':' in u:  # 192.168.1.1:81
-        u1 = u.split(':')[0]
+    if ':' in u.hostname:  # 192.168.1.1:81
+        u1 = u.hostname.split(':')[0]
         if is_ipv4(u1) or is_fqdn(u1):
             return True
 
